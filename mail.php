@@ -26,8 +26,6 @@ $to=test_input($to);
 $subject=test_input($subject);
 $body=test_input($body);
 
-
-
 # Make the call to the client.
 $result = $mgClient->sendMessage("$domain",
     array('from'    => $from,
