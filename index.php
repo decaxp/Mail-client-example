@@ -118,13 +118,32 @@ include_once "search.php";
     var flag=true;
 
     function swap(tr1,tr2){
+        //variant1
         var str='';
         len=tr1.getElementsByClassName('dataTd').length;
         for(var j=0;j<len;j++){
             str1=tr1.getElementsByClassName('dataTd')[j].innerHTML;
             tr1.getElementsByClassName('dataTd')[j].innerHTML=tr2.getElementsByClassName('dataTd')[j].innerHTML;
             tr2.getElementsByClassName('dataTd')[j].innerHTML=str1;
+
         }
+
+
+        //variant2
+//        var tr=document.createElement('tr');
+//        tr.className="dataTr";
+//        //Получаем ссылку на родителя sp2
+//        var parentDiv = tr1.parentNode;
+//        var td;
+//        for(var j=0;j<len;j++){
+//            td=document.createElement('td');
+//            td.className="dataTd";
+//            td.innerHTML=tr2.getElementsByClassName('dataTd')[j].innerHTML;
+//            tr.appendChild(td);
+//        }
+//        console.log(tr);
+//        parentDiv.insertBefore(tr,tr1);
+//        tr2.remove();
     }
 
    function mSort(num){
@@ -139,6 +158,7 @@ include_once "search.php";
 
                if (flag) {
                    if (str1 < str2) {
+                       console.log(z.toString()+'   '+(z+1).toString());
                        swap(tr[z], tr[z + 1]);
                    }
                }else{
@@ -150,10 +170,7 @@ include_once "search.php";
        }
 
        flag=!flag;
-
-
    }
-
 
     function isEmpty(str) {
         return (!str || 0 === str.length);
@@ -202,7 +219,7 @@ include_once "search.php";
                                 if (property.localeCompare('subject')!=0)
                                     str = str + "<td class='dataTd'>" + array[row][property] + "</td>";
                                 else{
-                                    str = str + "<td><button class='btn btn-link' onclick='ajaxBody(";
+                                    str = str + "<td class='dataTd'><button class='btn btn-link' onclick='ajaxBody(";
                                     str=str+ array[row]["id"];
                                     str+=")'  data-toggle='modal' data-target='#myModal'>";
                                     str+=array[row]['subject'];
